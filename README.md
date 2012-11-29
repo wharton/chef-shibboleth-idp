@@ -1,4 +1,4 @@
-# chef-stash  [![Build Status](https://secure.travis-ci.org/wharton/chef-shibboleth-idp.png?branch=master)](http://travis-ci.org/wharton/chef-shibboleth-idp)
+# chef-shibboleth-idp [![Build Status](https://secure.travis-ci.org/wharton/chef-shibboleth-idp.png?branch=master)](http://travis-ci.org/wharton/chef-shibboleth-idp)
 
 ## Description
 
