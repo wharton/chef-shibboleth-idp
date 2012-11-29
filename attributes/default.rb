@@ -19,7 +19,7 @@
 
 default['shibboleth-idp']['version'] = "2.3.8"
 default['shibboleth-idp']['idp_home'] = "/opt/shibboleth-idp"
-default['shibboleth-idp']['host_name'] = "#{node['fqdn']}"
+default['shibboleth-idp']['host_name'] = node['fqdn']
 default['shibboleth-idp']['keystore_password'] = "changeit"
 default['shibboleth-idp']['container_auth'] = "form"
 default['shibboleth-idp']['soap_port'] = 9443
