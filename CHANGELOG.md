@@ -1,3 +1,7 @@
+## v0.1.7 ##
+
+* Make iptables in-interface configurable.
+
 ## v0.1.6
 
 * Prevent Shibboleth IdP installer from running every Chef run
