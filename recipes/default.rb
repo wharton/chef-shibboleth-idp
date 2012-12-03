@@ -84,6 +84,7 @@ execute "run_shibboleth_idp_installer" do
     chown -R #{node['shibboleth-idp']['owner']}:#{node['shibboleth-idp']['group']} #{node['shibboleth-idp']['idp_home']}
   COMMAND
   cwd "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node['shibboleth-idp']['version']}"
+  not_if { File.exists?("/opt/shibboleth-idp/war") }
   notifies :restart, "service[tomcat]", :delayed
 end
 

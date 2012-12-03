@@ -1,4 +1,8 @@
-## v0.1.5 ##
+## v0.1.6
+
+* Prevent Shibboleth IdP installer from running every Chef run
+
+## v0.1.5
 
 * Removed erroneous creates for remote_file in default recipe
 
