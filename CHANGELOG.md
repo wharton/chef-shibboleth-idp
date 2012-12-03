@@ -1,3 +1,7 @@
+## v0.1.5 ##
+
+* Removed erroneous creates for remote_file in default recipe
+
 ## v0.1.4
 
 * Ensure Shibboleth IdP remote_file is cached

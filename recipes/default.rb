@@ -31,7 +31,6 @@ remote_file "#{Chef::Config['file_cache_path']}/#{remote_file_name}" do
   mode "0744"
   owner "root"
   group "root"
-  creates "#{Chef::Config['file_cache_path']}/#{remote_file_name}"
 end
 
 # Install Shibboleth, see https://wiki.shibboleth.net/confluence/display/SHIB2/IdPInstall
