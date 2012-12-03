@@ -25,5 +25,12 @@ default['shibboleth-idp']['container_auth'] = "form"
 default['shibboleth-idp']['soap_port'] = 9443
 default['shibboleth-idp']['tomcat6_dta_ssl_download_url'] = "https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar"
 default['shibboleth-idp']['template_cookbook'] = nil
-default['shibboleth-idp']['owner'] = node["tomcat"]["user"]
-default['shibboleth-idp']['group'] = node["tomcat"]["group"]
+
+case node["platform_family"]
+when "rhel"
+  default['shibboleth-idp']['owner'] = "tomcat"
+  default['shibboleth-idp']['group'] = "tomcat"
+else
+  default['shibboleth-idp']['owner'] = "tomcat6"
+  default['shibboleth-idp']['group'] = "tomcat6"
+end
