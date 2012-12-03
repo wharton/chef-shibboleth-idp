@@ -23,15 +23,15 @@ include_recipe "shibboleth-idp::trustedcerts"
 
 # Download installer
 
-file_name = "shibboleth-identityprovider-#{node['shibboleth-idp']['version']}-bin.zip"
+remote_file_name = "shibboleth-identityprovider-#{node['shibboleth-idp']['version']}-bin.zip"
 
-remote_file "#{Chef::Config['file_cache_path']}/#{file_name}" do
-  source "http://shibboleth.net/downloads/identity-provider/#{node['shibboleth-idp']['version']}/shibboleth-identityprovider-#{node['shibboleth-idp']['version']}-bin.zip"
+remote_file "#{Chef::Config['file_cache_path']}/#{remote_file_name}" do
+  source "http://shibboleth.net/downloads/identity-provider/#{node['shibboleth-idp']['version']}/#{remote_file_name}"
   action :create_if_missing
   mode "0744"
   owner "root"
   group "root"
-  not_if { File.exists?("/opt/shibboleth-idp/war") }
+  creates "#{Chef::Config['file_cache_path']}/#{remote_file_name}"
 end
 
 # Install Shibboleth, see https://wiki.shibboleth.net/confluence/display/SHIB2/IdPInstall

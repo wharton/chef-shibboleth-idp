@@ -1,3 +1,7 @@
+## v0.1.4
+
+* Ensure Shibboleth IdP remote_file is cached
+
 ## v0.1.3
 
 * Can't use node["tomcat"] on bootstrap so let's guess tomcat user per platform like tomcat cookbook does
