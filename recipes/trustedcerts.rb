@@ -17,11 +17,14 @@
 # limitations under the License.
 #
 
+# Import trusted certs from data bag if it exists
+begin
+  trusted_certs = data_bag("trusted_certs")
+rescue
+  Chef::Log.info("No trusted_certs data bag found.")
+end
 
-
-# Import trusted certs from data bag
-trusted_certs = data_bag("trusted_certs")
-
+trusted_certs ||= []
 trusted_certs.each do |certalias|
 
   cert = data_bag_item("trusted_certs", certalias)
