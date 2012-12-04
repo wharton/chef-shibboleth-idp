@@ -25,6 +25,7 @@ More documentation here.
 ## Recipes
 
 * `recipe[shibboleth-idp]` - Installs Shibboleth IdP on Tomcat
+* `recipe[shibboleth-idp::idp_configuration]` - Template IdP configuration via Chef
 * `recipe[shibboleth-idp::iptables]` - Sets up port forwarding with iptables using simple_iptables cookbook
 * `recipe[shibboleth-idp::trustedcerts]` - Installs additional trusted certificates within Java
 
