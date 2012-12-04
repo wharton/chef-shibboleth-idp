@@ -1,3 +1,7 @@
+## v0.1.8 ##
+
+* Added `['shibboleth-idp']['externally_manage_idp_config']` attribute for not using Chef to template IdP config files
+
 ## v0.1.7 ##
 
 * Make iptables in-interface configurable.
