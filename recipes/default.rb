@@ -124,7 +124,7 @@ template "#{node['tomcat']['config_dir']}/server.xml" do
 end
 
 # Template all the Shibboleht IDP configuration files
-unless ['shibboleth-idp']['externally_manage_idp_config']
+unless node['shibboleth-idp']['externally_manage_idp_config']
 
   %w{ attribute-filter attribute-resolver handler internal logging relying-party service }.each do |config|
     template "#{node['shibboleth-idp']['idp_home']}/conf/#{config}.xml" do
