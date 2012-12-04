@@ -27,6 +27,6 @@ simple_iptables_rule "TOMCAT_HTTP_REDIRECTS" do
   table "nat"
   direction "PREROUTING"
   rule [ "#{in_interface}--protocol tcp --dport 80 --jump REDIRECT --to-port 8080",
-         "#{in_interface}--in-interface eth1 --protocol tcp --dport 443 --jump REDIRECT --to-port 8443" ]
+         "#{in_interface}--protocol tcp --dport 443 --jump REDIRECT --to-port 8443" ]
   jump false
 end
