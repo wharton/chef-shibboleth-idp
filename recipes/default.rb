@@ -122,28 +122,3 @@ template "#{node['tomcat']['config_dir']}/server.xml" do
   group node['shibboleth-idp']['group']
   notifies :restart, "service[tomcat]", :delayed
 end
-
-# Template all the Shibboleht IDP configuration files
-unless node['shibboleth-idp']['externally_manage_idp_config']
-
-  %w{ attribute-filter attribute-resolver handler internal logging relying-party service }.each do |config|
-    template "#{node['shibboleth-idp']['idp_home']}/conf/#{config}.xml" do
-      source "#{config}.xml.erb"
-      cookbook node['shibboleth-idp']['template_cookbook']
-      mode "0644"
-      owner node['shibboleth-idp']['owner']
-      group node['shibboleth-idp']['group']
-      notifies :restart, "service[tomcat]", :delayed
-    end
-  end
-
-  template "#{node['shibboleth-idp']['idp_home']}/conf/login.config" do
-    source "login.config.erb"
-    cookbook node['shibboleth-idp']['template_cookbook']
-    mode "0644"
-    owner node['shibboleth-idp']['owner']
-    group node['shibboleth-idp']['group']
-    notifies :restart, "service[tomcat]", :delayed
-  end
-
-end

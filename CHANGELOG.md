@@ -1,3 +1,7 @@
+## v0.2.0 ##
+
+* Moved IdP configuration into its own recipe (`idp_configuration`) and removed attribute `['shibboleth-idp']['externally_manage_idp_config']`
+
 ## v0.1.8 ##
 
 * Added `['shibboleth-idp']['externally_manage_idp_config']` attribute for not using Chef to template IdP config files
