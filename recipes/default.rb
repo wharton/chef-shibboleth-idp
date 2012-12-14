@@ -17,6 +17,17 @@
 # limitations under the License.
 #
 
+# Use encrypted data bag, if available
+
+begin
+  shibboleth_idp_data_bag = Chef::EncryptedDataBagItem.load("shibboleth","idp")[node.chef_environment]
+  keystore_password = shibboleth_idp_data_bag['keystore_password']
+rescue
+  Chef::Log.info("No shibboleth-idp encrypted data bag found")
+ensure
+  keystore_password ||= node['shibboleth-idp']['keystore_password']
+end
+
 # Install trusted certs
 
 include_recipe "shibboleth-idp::trustedcerts"
@@ -120,5 +131,9 @@ template "#{node['tomcat']['config_dir']}/server.xml" do
   mode "0644"
   owner node['shibboleth-idp']['owner']
   group node['shibboleth-idp']['group']
+  variables(
+    :keystoreFile => "#{node['shibboleth-idp']['idp_home']}/credentials/idp.jks",
+    :keystorePass => keystore_password
+  )
   notifies :restart, "service[tomcat]", :delayed
 end

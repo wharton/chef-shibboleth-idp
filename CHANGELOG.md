@@ -1,3 +1,8 @@
+## v0.4.0 ##
+
+* Added encrypted data bag support for keystore_password
+* Extracted keystoreFile and keystorePass from server.xml template
+
 ## v0.3.0 ##
 
 * Added Status AllowedIPs handling in web.xml template

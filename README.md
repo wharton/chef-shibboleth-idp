@@ -29,6 +29,11 @@ More documentation here.
 * `recipe[shibboleth-idp::iptables]` - Sets up port forwarding with iptables using simple_iptables cookbook
 * `recipe[shibboleth-idp::trustedcerts]` - Installs additional trusted certificates within Java
 
+## Data Bags
+
+* `shibboleth/idp` _optional_ encrypted data bag
+  * `['keystore_password']` - IdP keystore password, overrides `node['shibboleth-idp']['keystore_password']`
+
 ## Usage
 
 More documentation here.
