@@ -1,3 +1,8 @@
+## v0.5.0 ##
+
+* Breaking into mutlipe recipes
+* Changing templating method for tomcat server.xml
+
 ## v0.4.0 ##
 
 * Added encrypted data bag support for keystore_password
