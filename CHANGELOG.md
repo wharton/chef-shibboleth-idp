@@ -1,3 +1,7 @@
+## v0.5.2 ##
+
+* Added IdP Java Keystore password from encrypted data bag if available during IdP installation
+
 ## v0.5.0 ##
 
 * Breaking into mutlipe recipes
