@@ -17,6 +17,17 @@
 # limitations under the License.
 #
 
+# Use encrypted data bag, if available
+
+begin
+  shibboleth_idp_data_bag = Chef::EncryptedDataBagItem.load("shibboleth","idp")[node.chef_environment]
+  keystore_password = shibboleth_idp_data_bag['keystore_password']
+rescue
+  Chef::Log.info("No shibboleth-idp encrypted data bag found")
+ensure
+  keystore_password ||= node['shibboleth-idp']['keystore_password']
+end
+
 # Download installer
 
 remote_file_name = "shibboleth-identityprovider-#{node['shibboleth-idp']['version']}-bin.zip"
@@ -45,6 +56,9 @@ template "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node[
   mode "0400"
   owner "root"
   group "root"
+  variables(
+    :keystore_password => keystore_password
+  )
   not_if { File.exists?("/opt/shibboleth-idp/war") }
 end
 
