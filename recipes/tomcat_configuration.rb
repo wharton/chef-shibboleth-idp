@@ -54,23 +54,8 @@ template "#{node['tomcat']['config_dir']}/Catalina/localhost/idp.xml" do
   notifies :restart, "service[tomcat]", :delayed
 end
 
-=begin
-template "#{node['tomcat']['config_dir']}/server.xml" do
-  source "server.xml.erb"
-  cookbook node['shibboleth-idp']['template_cookbook']
-  mode "0644"
-  owner node['shibboleth-idp']['owner']
-  group node['shibboleth-idp']['group']
-  variables(
-    :keystoreFile => "#{node['shibboleth-idp']['idp_home']}/credentials/idp.jks",
-    :keystorePass => keystore_password
-  )
-  notifies :restart, "service[tomcat]", :delayed
-end
-=end
-
 tomcat_sever_xml_template = resources(:template => "#{node["tomcat"]["config_dir"]}/server.xml")
-tomcat_sever_xml_template.cookbook "shibboleth-idp"
+tomcat_sever_xml_template.cookbook node['shibboleth-idp']['template_cookbook']
 tomcat_sever_xml_template.variables(
   :keystoreFile => "#{node['shibboleth-idp']['idp_home']}/credentials/idp.jks",
   :keystorePass => keystore_password
