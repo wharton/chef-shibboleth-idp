@@ -1,3 +1,7 @@
+## v0.5.5 ##
+
+* Set default template cookbook to shibboleth-idp.
+
 ## v0.5.4 ##
 
 * Updated default templates to use additional node attributes.

@@ -25,9 +25,9 @@
     <!-- ========================================== -->
     <!--      Relying Party Configurations          -->
     <!-- ========================================== -->
-    <rp:AnonymousRelyingParty provider="https://<%= node["fqdn"] %>/idp/shibboleth" defaultSigningCredentialRef="IdPCredential"/>
+    <rp:AnonymousRelyingParty provider="https://<%= node["shibboleth-idp"]["host_name"] %>/idp/shibboleth" defaultSigningCredentialRef="IdPCredential"/>
     
-    <rp:DefaultRelyingParty provider="https://<%= node["fqdn"] %>/idp/shibboleth" defaultSigningCredentialRef="IdPCredential">
+    <rp:DefaultRelyingParty provider="https://<%= node["shibboleth-idp"]["host_name"] %>/idp/shibboleth" defaultSigningCredentialRef="IdPCredential">
         <!-- 
             Each attribute in these profiles configuration is set to its default value,
             that is, the values that would be in effect if those attributes were not present.
