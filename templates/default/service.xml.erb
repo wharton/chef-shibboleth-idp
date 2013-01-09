@@ -16,11 +16,11 @@
                                   urn:mace:shibboleth:2.0:resource classpath:/schema/shibboleth-2.0-resource.xsd">
 
     <srv:Service id="shibboleth.AttributeResolver" xsi:type="attribute-resolver:ShibbolethAttributeResolver">
-        <srv:ConfigurationResource file="/opt/shibboleth-idp/conf/attribute-resolver.xml" xsi:type="resource:FilesystemResource"/>
+        <srv:ConfigurationResource file="<%= node["shibboleth-idp"]["idp_home"] %>/conf/attribute-resolver.xml" xsi:type="resource:FilesystemResource"/>
     </srv:Service>
 
     <srv:Service id="shibboleth.AttributeFilterEngine" xsi:type="attribute-afp:ShibbolethAttributeFilteringEngine">
-        <srv:ConfigurationResource file="/opt/shibboleth-idp/conf/attribute-filter.xml" xsi:type="resource:FilesystemResource"/>
+        <srv:ConfigurationResource file="<%= node["shibboleth-idp"]["idp_home"] %>/conf/attribute-filter.xml" xsi:type="resource:FilesystemResource"/>
     </srv:Service>
     
     <srv:Service id="shibboleth.SAML1AttributeAuthority" xsi:type="attribute-authority:SAML1AttributeAuthority" 
@@ -33,11 +33,11 @@
 
     <srv:Service id="shibboleth.RelyingPartyConfigurationManager" xsi:type="relyingParty:SAMLMDRelyingPartyConfigurationManager" 
                  depends-on="shibboleth.SAML1AttributeAuthority shibboleth.SAML2AttributeAuthority">
-        <srv:ConfigurationResource file="/opt/shibboleth-idp/conf/relying-party.xml" xsi:type="resource:FilesystemResource"/>
+        <srv:ConfigurationResource file="<%= node["shibboleth-idp"]["idp_home"] %>/conf/relying-party.xml" xsi:type="resource:FilesystemResource"/>
     </srv:Service>
 
     <srv:Service id="shibboleth.HandlerManager" depends-on="shibboleth.RelyingPartyConfigurationManager" xsi:type="profile:IdPProfileHandlerManager">
-        <srv:ConfigurationResource file="/opt/shibboleth-idp/conf/handler.xml" xsi:type="resource:FilesystemResource"/>
+        <srv:ConfigurationResource file="<%= node["shibboleth-idp"]["idp_home"] %>/conf/handler.xml" xsi:type="resource:FilesystemResource"/>
     </srv:Service>
     
     <!-- 

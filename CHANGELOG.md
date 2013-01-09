@@ -1,3 +1,7 @@
+## v0.5.4 ##
+
+* Updated default templates to use additional node attributes.
+
 ## v0.5.3 ##
 
 * Fixed server.xml template source cookbook

@@ -25,9 +25,9 @@
     <!-- ========================================== -->
     <!--      Relying Party Configurations          -->
     <!-- ========================================== -->
-    <rp:AnonymousRelyingParty provider="https://test.vagrant.idp/idp/shibboleth" defaultSigningCredentialRef="IdPCredential"/>
+    <rp:AnonymousRelyingParty provider="https://<%= node["fqdn"] %>/idp/shibboleth" defaultSigningCredentialRef="IdPCredential"/>
     
-    <rp:DefaultRelyingParty provider="https://test.vagrant.idp/idp/shibboleth" defaultSigningCredentialRef="IdPCredential">
+    <rp:DefaultRelyingParty provider="https://<%= node["fqdn"] %>/idp/shibboleth" defaultSigningCredentialRef="IdPCredential">
         <!-- 
             Each attribute in these profiles configuration is set to its default value,
             that is, the values that would be in effect if those attributes were not present.
@@ -104,8 +104,8 @@
     <!--     Security Configurations                -->
     <!-- ========================================== -->
     <security:Credential id="IdPCredential" xsi:type="security:X509Filesystem">
-        <security:PrivateKey>/opt/shibboleth-idp/credentials/idp.key</security:PrivateKey>
-        <security:Certificate>/opt/shibboleth-idp/credentials/idp.crt</security:Certificate>
+        <security:PrivateKey><%= node["shibboleth-idp"]["idp_home"] %>/credentials/idp.key</security:PrivateKey>
+        <security:Certificate><%= node["shibboleth-idp"]["idp_home"] %>/credentials/idp.crt</security:Certificate>
     </security:Credential>
     
     <!-- Trust engine used to evaluate the signature on loaded metadata. -->
