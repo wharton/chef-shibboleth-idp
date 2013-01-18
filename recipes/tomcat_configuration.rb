@@ -19,16 +19,7 @@
 
 # Configure Tomcat, see https://wiki.shibboleth.net/confluence/display/SHIB2/IdPApacheTomcatPrepare
 
-# Use encrypted data bag, if available
-
-begin
-  shibboleth_idp_data_bag = Chef::EncryptedDataBagItem.load("shibboleth","idp")[node.chef_environment]
-  keystore_password = shibboleth_idp_data_bag['keystore_password']
-rescue
-  Chef::Log.info("No shibboleth-idp encrypted data bag found")
-ensure
-  keystore_password ||= node['shibboleth-idp']['keystore_password']
-end
+keystore_password = ShibbolethIdP.get_keystore_password(node)
 
 execute "copy_shibboleth_idp_endorsed" do
   command "cp -r #{node['shibboleth-idp']['idp_home']}/lib/endorsed #{node['tomcat']['home']}/endorsed" 

@@ -17,16 +17,9 @@
 # limitations under the License.
 #
 
-# Use encrypted data bag, if available
+# Get the configured keystore password
 
-begin
-  shibboleth_idp_data_bag = Chef::EncryptedDataBagItem.load("shibboleth","idp")[node.chef_environment]
-  keystore_password = shibboleth_idp_data_bag['keystore_password']
-rescue
-  Chef::Log.info("No shibboleth-idp encrypted data bag found")
-ensure
-  keystore_password ||= node['shibboleth-idp']['keystore_password']
-end
+keystore_password = ShibbolethIdP.get_keystore_password(node)
 
 # Download installer
 
@@ -74,6 +67,22 @@ template "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node[
 end
 
 %w{ error-404.jsp error.jsp login-error.jsp login.css login.jsp }.each do |file|
+  template "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node['shibboleth-idp']['version']}/src/main/webapp/#{file}" do
+    source "#{file}.erb"
+    cookbook node['shibboleth-idp']['template_cookbook']
+    mode "0644"
+    owner "root"
+    group "root"
+    not_if { File.exists?("/opt/shibboleth-idp/war") }
+  end
+end
+
+# Inject custom files into the webapp
+
+custom_templates = node['shibboleth-idp']['custom_webapp_templates']
+custom_templates ||= []
+
+custom_templates.each do |file|
   template "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node['shibboleth-idp']['version']}/src/main/webapp/#{file}" do
     source "#{file}.erb"
     cookbook node['shibboleth-idp']['template_cookbook']

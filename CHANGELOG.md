@@ -1,3 +1,8 @@
+## v0.5.6 ##
+
+* Add ability to inject custom templates into idp webapp.
+* Moved keystore password resolution to library which supports data bag for chef solo and encrypted data bag for hosted chef.
+
 ## v0.5.5 ##
 
 * Set default template cookbook to shibboleth-idp.
