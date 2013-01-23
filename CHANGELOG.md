@@ -1,3 +1,7 @@
+## v0.5.7 ##
+
+* Fixing comment headers.
+
 ## v0.5.6 ##
 
 * Add ability to inject custom templates into idp webapp.

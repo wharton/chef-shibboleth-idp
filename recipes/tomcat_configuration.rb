@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: shibboleth-idp
-# Recipe:: idp_configuration
+# Recipe:: tomcat_configuration
 #
-# Copyright 2012 Nathan Mische, Brian Flad
+# Copyright 2013 Nathan Mische, Brian Flad
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: app-quakernet
-# Library:: quakernet
+# Cookbook Name:: shibboleth-idp
+# Library:: shibbolethidp
 #
-# Copyright 2012, Nathan Mische
+# Copyright 2013, Nathan Mische
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
