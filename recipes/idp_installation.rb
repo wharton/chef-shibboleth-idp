@@ -46,7 +46,7 @@ end
 
 template "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node['shibboleth-idp']['version']}/src/installer/resources/install.properties" do
   source "install.properties.erb"
-  mode "0400"
+  mode "0600"
   owner "root"
   group "root"
   variables(

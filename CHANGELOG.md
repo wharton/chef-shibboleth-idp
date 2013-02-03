@@ -1,3 +1,7 @@
+## v0.5.8
+
+* Adjusted install.properties template permissions to fix file updating issues during installation
+
 ## v0.5.7 ##
 
 * Fixing comment headers.
