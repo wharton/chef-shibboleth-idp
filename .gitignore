@@ -1,1 +1,7 @@
+.bundle
+.cache
+.vagrant
+Berksfile.lock
+Gemfile.lock
+\#*#
 .DS_Store
