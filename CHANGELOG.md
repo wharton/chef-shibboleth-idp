@@ -1,3 +1,9 @@
+## 0.6.0
+
+* Added `node['shibboleth-idp']['logging']` attributes
+* Use `node['tomcat']['group']` for `default['shibboleth-idp']['group']`
+* Use `node['tomcat']['user']` for `default['shibboleth-idp']['owner']`
+
 ## v0.5.8
 
 * Adjusted install.properties template permissions to fix file updating issues during installation
