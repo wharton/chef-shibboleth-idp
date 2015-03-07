@@ -24,9 +24,14 @@ keystore_password = ShibbolethIdP.get_keystore_password(node)
 # Download installer
 
 remote_file_name = "shibboleth-identityprovider-#{node['shibboleth-idp']['version']}-bin.zip"
+if node['shibboleth-idp']['download_url'].nil?
+  source_file_name = "http://shibboleth.net/downloads/identity-provider/#{node['shibboleth-idp']['version']}/#{remote_file_name}"
+else 
+  source_file_name = node['shibboleth-idp']['download_url']
+end
 
 remote_file "#{Chef::Config['file_cache_path']}/#{remote_file_name}" do
-  source "http://shibboleth.net/downloads/identity-provider/#{node['shibboleth-idp']['version']}/#{remote_file_name}"
+  source source_file_name
   action :create_if_missing
   mode "0744"
   owner "root"
