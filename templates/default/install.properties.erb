@@ -3,4 +3,4 @@ idp.home.input=<%= node['shibboleth-idp']['idp_home'] %>
 idp.hostname=<%= node['shibboleth-idp']['host_name'] %>
 idp.hostname.input=<%= node['shibboleth-idp']['host_name'] %>
 idp.keystore.pass=<%= @keystore_password %>
-install.config=yes
+install.config=<%= File.exists?("#{node['shibboleth-idp']['idp_home']}/war") ? "no" : "yes" %>
