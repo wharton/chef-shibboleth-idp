@@ -96,7 +96,7 @@ custom_files ||= []
 
 custom_files.each do |file|
   cookbook_file "#{Chef::Config['file_cache_path']}/shibboleth-identityprovider-#{node['shibboleth-idp']['version']}/src/main/webapp/#{file}" do
-    source "#{file}"
+    source file
     cookbook node['shibboleth-idp']['template_cookbook']
     mode "0644"
     owner "root"
