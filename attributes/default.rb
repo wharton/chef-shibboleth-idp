@@ -30,6 +30,7 @@ default['shibboleth-idp']['soap_port'] = 9443
 default['shibboleth-idp']['status_allowed_ips'] = %w{ 127.0.0.1/32 ::1/128 }
 default['shibboleth-idp']['template_cookbook'] = "shibboleth-idp"
 default['shibboleth-idp']['tomcat6_dta_ssl_download_url'] = "https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar"
+default['shibboleth-idp']['download_url'] = nil
 default['shibboleth-idp']['version'] = "2.3.8"
 
 # iptables
