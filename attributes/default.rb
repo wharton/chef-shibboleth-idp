@@ -21,6 +21,7 @@ include_attribute "tomcat"
 
 default['shibboleth-idp']['container_auth'] = "form"
 default['shibboleth-idp']['custom_webapp_templates'] = nil
+default['shibboleth-idp']['custom_webapp_files'] = nil
 default['shibboleth-idp']['group'] = node['tomcat']['group']
 default['shibboleth-idp']['host_name'] = node['fqdn']
 default['shibboleth-idp']['idp_home'] = "/opt/shibboleth-idp"
@@ -32,6 +33,7 @@ default['shibboleth-idp']['template_cookbook'] = "shibboleth-idp"
 default['shibboleth-idp']['tomcat6_dta_ssl_download_url'] = "https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar"
 default['shibboleth-idp']['download_url'] = nil
 default['shibboleth-idp']['version'] = "2.3.8"
+default['shibboleth-idp']['checksum'] = nil
 
 # iptables
 default['shibboleth-idp']['ip_tables']['in_interface'] = nil
