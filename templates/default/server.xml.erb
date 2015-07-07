@@ -90,7 +90,7 @@
     -->    
     <Connector port="<%= node["tomcat"]["ssl_port"] %>" protocol="HTTP/1.1" SSLEnabled="true"
                maxThreads="150" scheme="https" secure="true"
-               clientAuth="false" sslProtocol="TLS"
+               clientAuth="false" sslProtocols="TLSv1,TLSv1.1,TLSv1.2"
                keystoreFile="<%= @keystoreFile %>"
                keystorePass="<%= @keystorePass %>" />
     
